@@ -1,0 +1,7 @@
+@tailwind base;
+
+@tailwind components;
+
+@import "app.css";
+
+@tailwind utilities;
