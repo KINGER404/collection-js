@@ -52,11 +52,11 @@ class Collection {
         return this.items.contains(value);
     }
 
-    first(defaultValue = '') {
+    first(defaultValue = null) {
        return this.exists(0) ? this.items[0] : defaultValue;
     }
 
-    last(defaultValue = '') {
+    last(defaultValue = null) {
         let count = this.count() - 1;
 
         return this.exists(count) ? this.items[count] : defaultValue
