@@ -174,8 +174,76 @@ test('Collection.shuffle', t => {
     t.assert(shuffledCollection !== collection)
 })
 
+test('Collection.sum', t => {
+    let collection = new Collection([1, 2, 3]);
+    let collectionWithObjects = new Collection([
+        {'product': 'Desk', 'price': 200},
+        {'product': 'Chair', 'price': 200}
+    ])
 
+    t.is(collectionWithObjects.sum('price'), 400)
 
+    t.is(collection.sum(), 6)
+})
+
+test('Collection.avg', t => {
+    let collection = new Collection([1, 2, 3]);
+    let collectionWithObjects = new Collection([
+        {'product': 'Desk', 'price': 200},
+        {'product': 'Chair', 'price': 200}
+    ])
+
+    t.is(collectionWithObjects.avg('price'), 200)
+
+    t.is(collection.avg(), 2)
+})
+
+test('Collection.each', t => {
+    let collection = new Collection([1, 2, 3]);
+    let counter = 0;
+
+    collection.each(function (item) {
+        counter += item
+    })
+
+    t.is(6, counter)
+})
+
+test('Collection.map', t => {
+    let collection = new Collection([1, 2, 3]);
+
+    t.deepEqual(collection.map(function (item) {
+        item += 1
+
+        return item;
+    }), new Collection([2, 3, 4]))
+})
+
+test('Collection.filter', t => {
+    let collection = new Collection([false, null, undefined]);
+
+    t.deepEqual(collection.filter(), new Collection([]))
+
+    let positiveCollection = new Collection([1, 2, 3, null])
+
+    t.deepEqual(positiveCollection.filter(), new Collection([1, 2, 3]))
+
+    t.deepEqual(positiveCollection.filter(function (item) {
+        return item && item % 2 === 0
+    }), new Collection([2]))
+})
+
+test('Collection.find', t => {
+    let collection = new Collection([2, 1, 3]);
+
+    t.deepEqual(collection.find(), collection)
+
+    let positiveCollection = new Collection([1, 2, 3, 4])
+
+    t.deepEqual(positiveCollection.find(function (item) {
+        return item > 3
+    }), new Collection([4]))
+})
 
 
 

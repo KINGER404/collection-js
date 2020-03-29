@@ -8,7 +8,11 @@ let items = [
     {'product': 'Desk', 'price': 2100},
     {'product': 'Desk', 'price': 200},
 ];
+let num = 0;
+if(typeof items === "Array") {
+    num = 10;
+} else {
+    num = 100
+}
 
-console.log(
-    collect([1, 2, 3, 3]).all()
-)
+console.log(100)

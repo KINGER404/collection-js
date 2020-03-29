@@ -133,13 +133,56 @@ class Collection {
 
     shuffle() {
         return this.make(
-            this.items.sort(() => Math.random() - 0.5
-            )
+            this.items.sort(() => Math.random() - 0.5)
         )
     }
 
-    summ()
+    sum(key = null) {
+        let sum = 0;
+        if (!key) {
+            for(let i = 0; i < this.count(); i++) {
+                sum += this.items[i];
+            }
+        } else {
+            for(let i = 0; i < this.count(); i++) {
+                sum += this.items[i][key];
+            }
+        }
+        return sum;
+    }
 
+    avg(key = null) {
+        return this.sum(key) / this.count();
+    }
+
+    each(callback) {
+        this.items.forEach(callback)
+
+        return this
+    }
+
+    map(callback) {
+        return this.make(
+            this.items.map(callback)
+        )
+    }
+
+    filter(callback = null) {
+        let defaultCallback = item => !!item;
+
+        let filtredItems = callback
+            ? this.items.filter(callback)
+            : this.items.filter(defaultCallback);
+
+        return this.make(filtredItems);
+    }
+
+    find(callback = null) {
+        let findedItems = callback
+            ? this.items.find(callback)
+            : this.items
+        return this.make(findedItems);
+    }
 }
 
 module.exports = { Collection, collect };
