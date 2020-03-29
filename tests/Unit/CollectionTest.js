@@ -32,6 +32,7 @@ test('Collection.first', t => {
 
     t.is(collection.first(), items[0]);
 
+    t.is(collection.make([]).first(), null)
     t.is(collection.make([]).first('hello world'), 'hello world')
 })
 
@@ -43,6 +44,7 @@ test('Collection.last', t => {
 
     t.deepEqual(collection.last(), {'product': 'Chair', 'price': 100});
 
+    t.is(collection.make([]).last(), null)
     t.is(collection.make([]).last('hello world'), 'hello world')
 })
 
