@@ -108,6 +108,18 @@ class Collection {
 
         return this.make(uniqueItems)
     }
+
+    push(item) {
+        this.items.push(item)
+
+        return this
+    }
+
+    pop() {
+         return this.items.pop()
+    }
+
+
 }
 
 module.exports = { Collection, collect };

@@ -136,6 +136,18 @@ test('Collection.hasAny', t => {
     t.is(notEmptyCollection.hasAny(), true);
 })
 
+test('Collection.push', t => {
+    let collection = new Collection([]);
+
+    t.deepEqual(collection.push(1), new Collection([1]))
+})
+
+test('Collection.pop', t => {
+    let collection = new Collection([1, 2, 3]);
+
+    t.deepEqual(collection.pop(), 3)
+})
+
 
 
 
