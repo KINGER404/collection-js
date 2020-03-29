@@ -119,6 +119,26 @@ class Collection {
          return this.items.pop()
     }
 
+    reverse() {
+        this.items.reverse()
+
+        return this
+    }
+
+    tail(count = 1) {
+        return this.make(
+            this.items.slice(this.count() - count)
+        )
+    }
+
+    shuffle() {
+        return this.make(
+            this.items.sort(() => Math.random() - 0.5
+            )
+        )
+    }
+
+    summ()
 
 }
 

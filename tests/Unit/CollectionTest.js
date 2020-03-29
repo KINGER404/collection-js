@@ -148,6 +148,30 @@ test('Collection.pop', t => {
     t.deepEqual(collection.pop(), 3)
 })
 
+test('Collection.reverse', t => {
+    let collection = new Collection([1, 2, 3]);
+
+    t.deepEqual(collection.reverse(), new Collection([3, 2, 1]))
+})
+
+test('Collection.tail', t => {
+    let collection = new Collection([1, 2, 3]);
+
+    t.deepEqual(collection.tail(), new Collection([3]))
+
+    t.deepEqual(collection.tail(2), new Collection([2, 3]))
+})
+
+test('Collection.shuffle', t => {
+    let collection = new Collection([1, 2, 3, 4 , 5 , 6, 7, 8, 9, 10]);
+
+    let shuffledCollection = collection.shuffle();
+
+    t.is(shuffledCollection.count(), collection.count())
+
+    t.assert(shuffledCollection !== collection)
+})
+
 
 
 
